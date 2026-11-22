@@ -255,6 +255,31 @@
 - **Krita 6（Qt6 / PyQt6）**：未适配，插件目前是 PyQt5。
 - Krita 5.2 及更早版本未测试。
 
+## macOS 实测验证
+
+环境：macOS 15.8（Apple Silicon）+ Krita 5.3.4.1，内嵌 Python 3.13.5。
+
+| 项目 | 结果 |
+|---|---|
+| numpy 导入 | ✅ 用 Krita 自带的 libpython 3.13.5 加载 `numpy 2.3.0`（`cp313` / `macosx_11_0_arm64`）成功 |
+| 插件加载 | ✅ 插件管理器启用后，Docker 面板与 `Shift+B` 弹窗均出现 |
+| 面板渲染与交互 | ✅ 色相环、S/V 方块与辅助线、L/C/a/b 色条、H/S/V 与 HEX 数值框正常，界面中文 |
+| 预览浮层 | ✅ 悬停时在面板外侧显示当前色与前两次选色 |
+| 构建 | ✅ 16.6 MB 发布包，顶层含 `install_macos.sh` |
+
+Docker 面板：
+
+![Docker 面板](docs/screenshots/docker.png)
+
+<details>
+<summary>弹出面板与预览浮层</summary>
+
+![Shift+B 弹出面板](docs/screenshots/popup.png)
+
+![预览浮层](docs/screenshots/overlay.png)
+
+</details>
+
 ## 常见问题（FAQ）
 
 1. **为什么明度到不了 1.0？**
@@ -619,6 +644,7 @@ Uninstall: `./install_macos.sh --uninstall`.
 ### Compatibility
 
 - **Supported:** Krita **5.3.x** on **macOS (Apple Silicon / arm64)**. Tested on macOS 15.8 + Krita 5.3.4.1.
+- Verified: `numpy 2.3.0` imports inside Krita's own libpython 3.13.5, and the Docker panel, `Shift+B` popup and preview overlay all work (screenshots above).
 - The package bundles `numpy 2.3.0` (`cp313` / `macosx_11_0_arm64`), matching the Python 3.13 embedded in Krita 5.3.4.
 - **Intel Macs:** `FORCE_PLATFORM=macosx_10_9_x86_64 ./install_macos.sh` (Krita must run under Rosetta); untested.
 - **Linux / Windows:** not provided here; Windows users should use the upstream release.
