@@ -1,9 +1,9 @@
 #!/bin/bash
 # 馍馍拾色器 / Momo Color Picker — macOS 安装脚本
 #
-# 与 install.bat 对应：把插件装进 Krita 用户资源目录，并把插件内置的
-# numpy 换成与 Krita 内嵌 Python 匹配的 macOS wheel（发布包里的 Windows
-# numpy 是 .pyd/.dll，macOS 无法加载）。
+# 把插件装进 Krita 用户资源目录，并把插件内置的 numpy 换成与 Krita
+# 内嵌 Python 匹配的 macOS wheel（上游 Windows 包里的 numpy 是
+# .pyd/.dll，macOS 无法加载）。
 #
 # 用法:
 #   ./install_macos.sh                 # 安装 / 覆盖升级
